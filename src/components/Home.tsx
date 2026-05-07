@@ -1,4 +1,4 @@
-import React from 'react';
+import type { Page } from '../App';
 import { 
   MonitorPlay, 
   Laptop, 
@@ -19,7 +19,7 @@ import {
 } from 'lucide-react';
 
 interface HomeProps {
-  onNavigate: (page: 'home' | 'builder') => void;
+  onNavigate: (page: Page) => void;
 }
 
 export default function Home({ onNavigate }: HomeProps) {
@@ -44,7 +44,7 @@ export default function Home({ onNavigate }: HomeProps) {
             <nav className="hidden md:flex gap-8 text-sm font-bold tracking-wide text-[#001f3f]">
               <a href="#" className="hover:text-[#32CD32] transition-colors uppercase">Início</a>
               <button onClick={() => onNavigate('builder')} className="hover:text-[#32CD32] transition-colors uppercase">Monte Seu PC</button>
-              <a href="#servicos" className="hover:text-[#32CD32] transition-colors uppercase">Serviços</a>
+              <button onClick={() => onNavigate('services')} className="hover:text-[#32CD32] transition-colors uppercase">Serviços</button>
               <a href="#onde-estamos" className="hover:text-[#32CD32] transition-colors uppercase">Onde Estamos</a>
             </nav>
 
@@ -88,12 +88,12 @@ export default function Home({ onNavigate }: HomeProps) {
               >
                 Monte Seu PC Agora
               </button>
-              <a 
-                href="#servicos" 
+              <button 
+                onClick={() => onNavigate('services')}
                 className="bg-white hover:bg-slate-50 text-[#001f3f] border-2 border-[#001f3f] px-8 py-4 rounded-lg font-bold text-sm uppercase tracking-wider text-center transition-colors shadow-sm"
               >
                 Ver Serviços
-              </a>
+              </button>
             </div>
           </div>
         </div>
@@ -119,7 +119,7 @@ export default function Home({ onNavigate }: HomeProps) {
               <div className="flex flex-wrap gap-6">
                 <div className="flex items-center gap-3 text-slate-700">
                   <CheckCircle2 className="w-6 h-6 text-[#32CD32]" />
-                  <span className="font-semibold">Fundada em 16/11/2000</span>
+                  <span className="font-semibold">Desde 2000</span>
                 </div>
                 <div className="flex items-center gap-3 text-slate-700">
                   <ShieldCheck className="w-6 h-6 text-[#32CD32]" />
@@ -151,30 +151,6 @@ export default function Home({ onNavigate }: HomeProps) {
                 <div key={i} className="bg-white border border-slate-200 shadow-sm p-6 rounded-2xl hover:border-[#32CD32] hover:shadow-md transition-all group cursor-pointer" onClick={() => item.title === "PCs Gamers" ? onNavigate('builder') : null}>
                   <div className="w-12 h-12 bg-[#001f3f]/10 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                     <item.icon className="w-6 h-6 text-[#001f3f]" />
-                  </div>
-                  <h3 className="text-lg font-bold text-slate-900 mb-2 uppercase">{item.title}</h3>
-                  <p className="text-slate-600 text-sm leading-relaxed">{item.desc}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div id="servicos">
-            <div className="flex items-center gap-4 mb-10">
-              <h2 className="text-3xl font-black uppercase tracking-tight text-slate-900">O que fazemos</h2>
-              <div className="h-px bg-slate-300 flex-1"></div>
-            </div>
-            
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {[
-                { title: "Conserto de Notebook/PC", desc: "Arrumamos seu computador lento ou quebrado.", icon: Wrench },
-                { title: "Segurança Eletrônica", desc: "Câmeras de segurança e alarmes para sua casa ou empresa.", icon: ShieldCheck },
-                { title: "Colocamos Internet e Cabos na sua casa/empresa", desc: "Colocamos internet rápida e cabos onde você precisar.", icon: Wifi },
-                { title: "Servidores e Redes", desc: "Soluções completas para empresas.", icon: Server },
-              ].map((item, i) => (
-                <div key={i} className="bg-white border border-slate-200 shadow-sm p-6 rounded-2xl hover:border-blue-500 hover:shadow-md transition-all group">
-                  <div className="w-12 h-12 bg-[#32CD32]/10 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                    <item.icon className="w-6 h-6 text-[#32CD32]" />
                   </div>
                   <h3 className="text-lg font-bold text-slate-900 mb-2 uppercase">{item.title}</h3>
                   <p className="text-slate-600 text-sm leading-relaxed">{item.desc}</p>

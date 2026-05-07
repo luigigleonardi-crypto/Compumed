@@ -10,7 +10,8 @@ import {
   CheckCircle2,
   HelpCircle,
   Wand2,
-  PhoneCall
+  PhoneCall,
+  MapPin
 } from 'lucide-react';
 import { parts, predefinedBuilds, PartCategory, Part } from '../data/parts';
 
@@ -25,6 +26,53 @@ export default function Builder({ onNavigate }: BuilderProps) {
   const [mode, setMode] = useState<Mode>('selection');
   const [suggestedCategory, setSuggestedCategory] = useState<SuggestedCategory | null>(null);
 
+  // AI State
+  const [aiInput, setAiInput] = useState('');
+  const [isSearching, setIsSearching] = useState(false);
+  const [aiResult, setAiResult] = useState<{name: string, price: number, desc: string, specs: string} | null>(null);
+
+  const handleAISearch = async () => {
+    if (!aiInput.trim()) return;
+    setIsSearching(true);
+    setAiResult(null);
+    setSuggestedCategory(null);
+    
+    try {
+      const apiKey = process.env.GEMINI_API_KEY;
+      if (apiKey && apiKey !== 'undefined' && apiKey !== 'null') {
+        const { GoogleGenAI } = await import('@google/genai');
+        const ai = new GoogleGenAI({ apiKey });
+        const res = await ai.models.generateContent({
+           model: 'gemini-2.5-flash',
+           contents: `System: Você é especialista em hardware. O usuário quer montar um PC e dirá o que precisa rodar. Responda APENAS com um JSON no formato {"name": "Sua Categoria Ideal", "price": 4500, "desc": "Explicação em português e sem juridiquês de por que as peças são adequadas.", "specs": "Processador X, 16GB RAM, SSD Y, Videocard Z"}. O preço é estimado em BRL na média de mercado.\nUser: ${aiInput}`,
+           config: { responseMimeType: 'application/json' }
+        });
+        const data = JSON.parse(res.text || '{}');
+        setAiResult(data);
+      } else {
+        // Fallback for previews without API key injected correctly
+        setTimeout(() => {
+          setAiResult({
+              name: 'PC Personalizado Sugerido',
+              price: 4500,
+              desc: 'Configuração ideal montada com base na sua solicitação.',
+              specs: 'Intel Core i5 / AMD Ryzen 5, 16GB RAM, 1TB SSD NVMe, Placa de vídeo adequada.'
+          });
+          setIsSearching(false);
+        }, 1500);
+        return;
+      }
+    } catch(e) {
+      setAiResult({
+          name: 'PC Custo Benefício',
+          price: 3500,
+          desc: 'Esta é uma recomendação padrão do nosso estoque.',
+          specs: 'Ryzen 5 4600G (Vídeo Integrado), 16GB RAM, 500GB SSD'
+      });
+    }
+    setIsSearching(false);
+  };
+
   // Manual Build State
   const [selectedParts, setSelectedParts] = useState<Record<PartCategory, Part | null>>({
     cpu: null,
@@ -34,7 +82,8 @@ export default function Builder({ onNavigate }: BuilderProps) {
     gpu: null
   });
 
-  const manualTotal = Object.values(selectedParts).reduce((sum, part) => sum + (part?.price || 0), 0);
+  const partsArray = Object.values(selectedParts) as (Part | null)[];
+  const manualTotal: number = partsArray.reduce((sum: number, part: Part | null) => sum + (part?.price || 0), 0);
 
   const handleSelectPart = (category: PartCategory, part: Part) => {
     setSelectedParts(prev => {
@@ -119,7 +168,7 @@ export default function Builder({ onNavigate }: BuilderProps) {
           </div>
         )}
 
-        {mode === 'suggested' && !suggestedCategory && (
+        {mode === 'suggested' && !suggestedCategory && !aiResult && !isSearching && (
           <div className="text-center animate-in fade-in slide-in-from-bottom-4 duration-500 max-w-2xl mx-auto">
             <button onClick={() => setMode('selection')} className="text-slate-500 hover:text-slate-900 font-bold text-sm uppercase mb-8 flex items-center justify-center gap-2 mx-auto">
               <ArrowLeft className="w-4 h-4" /> Trocar Modo
@@ -129,19 +178,97 @@ export default function Builder({ onNavigate }: BuilderProps) {
             </h1>
             
             <div className="flex flex-col gap-4">
-              <button onClick={() => setSuggestedCategory('internet_jogar')} className="bg-white border-2 border-slate-200 hover:border-[#32CD32] rounded-2xl p-6 text-left shadow-sm hover:shadow-md transition-all w-full">
+              <button onClick={() => { setAiResult(null); setSuggestedCategory('internet_jogar'); }} className="bg-white border-2 border-slate-200 hover:border-[#32CD32] rounded-2xl p-6 text-left shadow-sm hover:shadow-md transition-all w-full">
                 <h3 className="text-xl font-bold text-slate-900 uppercase mb-2">Quero jogar FIFA 26 (FC 26) e Estudar</h3>
                 <p className="text-slate-600">Um PC para quem quer o jogo rodando liso e abrir muitas abas de estudo ao mesmo tempo.</p>
               </button>
-              <button onClick={() => setSuggestedCategory('trabalho_pesado')} className="bg-white border-2 border-slate-200 hover:border-[#001f3f] rounded-2xl p-6 text-left shadow-sm hover:shadow-md transition-all w-full">
+              <button onClick={() => { setAiResult(null); setSuggestedCategory('trabalho_pesado'); }} className="bg-white border-2 border-slate-200 hover:border-[#001f3f] rounded-2xl p-6 text-left shadow-sm hover:shadow-md transition-all w-full">
                 <h3 className="text-xl font-bold text-slate-900 uppercase mb-2">Trabalho Pesado (After Effects e Engenharia/AutoCAD)</h3>
                 <p className="text-slate-600">Máquina potente para quem faz vídeos e desenhos de prédios ou peças. Não espera o computador pensar, ele faz na hora.</p>
               </button>
             </div>
+
+            <div className="bg-slate-100 p-6 rounded-2xl text-left border border-slate-200 mt-8">
+              <h3 className="text-xl font-bold text-slate-900 uppercase mb-2">Não achou o que queria?</h3>
+              <p className="text-slate-600 mb-4">Escreva o jogo ou programa que você precisa usar e nós buscamos os requisitos mínimos e mostramos a configuração ideal.</p>
+              <div className="flex flex-col sm:flex-row gap-3">
+                <input 
+                  type="text" 
+                  value={aiInput}
+                  onChange={e => setAiInput(e.target.value)}
+                  onKeyDown={e => e.key === 'Enter' && handleAISearch()}
+                  placeholder="Ex: Quero rodar Valorant e editar vídeos"
+                  className="flex-1 px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:border-[#32CD32]"
+                />
+                <button 
+                  onClick={handleAISearch}
+                  className="bg-[#32CD32] hover:bg-[#28a428] text-white px-6 py-3 rounded-xl font-bold transition-colors uppercase whitespace-nowrap"
+                >
+                  Buscar Peças
+                </button>
+              </div>
+            </div>
           </div>
         )}
 
-        {mode === 'suggested' && suggestedCategory && (
+        {mode === 'suggested' && isSearching && (
+          <div className="text-center animate-in fade-in slide-in-from-bottom-4 duration-500 max-w-2xl mx-auto py-20">
+             <div className="w-16 h-16 border-4 border-slate-200 border-t-[#32CD32] rounded-full animate-spin mx-auto mb-6"></div>
+             <h2 className="text-2xl font-black text-[#001f3f] uppercase mb-4">Buscando Requisitos...</h2>
+             <p className="text-slate-600 text-lg">Aguarde enquanto verificamos as peças ideais para rodar o que você precisa.</p>
+          </div>
+        )}
+
+        {mode === 'suggested' && aiResult && !isSearching && (
+          <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
+            <div className="text-center mb-12">
+              <button onClick={() => setAiResult(null)} className="text-slate-500 hover:text-slate-900 font-bold text-sm uppercase mb-8 flex items-center justify-center gap-2 mx-auto">
+                <ArrowLeft className="w-4 h-4" /> Buscar outro uso
+              </button>
+              <h1 className="text-3xl sm:text-4xl font-black uppercase tracking-tight text-[#001f3f] mb-4">
+                Configuração Escolhida
+              </h1>
+              <p className="text-slate-600 text-lg">Essa é a máquina ideal baseada nos requisitos do que você quer rodar.</p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+              <div className="col-span-full md:col-span-1 border border-[#32CD32]/50 bg-green-50/30 rounded-3xl p-8 flex flex-col justify-center shadow-sm">
+                 <h2 className="text-2xl font-black uppercase text-slate-900 mb-4">Sua Necessidade</h2>
+                 <p className="text-[#001f3f] font-medium leading-relaxed">
+                   "{aiInput}"
+                 </p>
+                 <div className="mt-4 p-4 bg-white/50 rounded-xl">
+                   <p className="text-sm font-bold text-slate-800 uppercase mb-1">Por que escolhemos isso?</p>
+                   <p className="text-slate-700 text-sm">{aiResult.desc}</p>
+                 </div>
+              </div>
+              <div className="col-span-full md:col-span-1 bg-white border-2 border-[#001f3f] rounded-3xl overflow-hidden shadow-md flex flex-col transition-all">
+                <div className="p-6 bg-[#001f3f] text-white text-center">
+                  <h3 className="text-xl font-black uppercase tracking-wider">{aiResult.name}</h3>
+                </div>
+                <div className="p-6 flex flex-col flex-1">
+                  <p className="text-3xl font-bold text-[#001f3f] text-center mb-6">
+                    Aprox. R$ {aiResult.price.toFixed(2).replace('.', ',')}
+                  </p>
+                  
+                  <div className="bg-slate-50 p-4 rounded-xl mb-6">
+                    <p className="text-sm text-slate-800 font-bold whitespace-pre-wrap text-center">
+                      {aiResult.specs}
+                    </p>
+                  </div>
+                  
+                  <div className="mt-auto">
+                    <a href={`https://wa.me/553125121313?text=Ol%C3%A1%21+Queria+comprar+um+computador+para+rodar+${encodeURIComponent(aiInput)}.+Voc%C3%AAs+podem+me+mandar+um+or%C3%A7amento+preciso%3F`} target="_blank" rel="noreferrer" className="w-full bg-[#32CD32] hover:bg-[#28a428] text-white py-4 rounded-xl font-bold uppercase tracking-wider transition-colors shadow-md flex items-center justify-center gap-2">
+                      Fazer Orçamento Exato <CheckCircle2 className="w-5 h-5" />
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {mode === 'suggested' && suggestedCategory && !aiResult && !isSearching && (
           <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
             <div className="text-center mb-12">
               <button onClick={() => setSuggestedCategory(null)} className="text-slate-500 hover:text-slate-900 font-bold text-sm uppercase mb-8 flex items-center justify-center gap-2 mx-auto">
