@@ -52,24 +52,12 @@ export default function Home({ onNavigate }: HomeProps) {
             {/* Menu de Navegação Amigável */}
             <nav className="hidden md:flex items-center gap-8 text-sm font-bold tracking-wider text-[#2b395e]">
               <a href="#" className="hover:text-[#32CD32] transition-colors uppercase">Início</a>
-              <a href="https://wa.me/553125121313?text=Ol%C3%A1%21+Gostaria+de+um+or%C3%A7amento+para+montar+um+PC+personalizado." target="_blank" rel="noreferrer" className="hover:text-[#32CD32] transition-colors uppercase">Monte Seu PC (Orçamento)</a>
-              <button onClick={() => onNavigate('services')} className="hover:text-[#32CD32] transition-colors uppercase cursor-pointer">Nossos Serviços</button>
+              <a href="https://wa.me/553125121313?text=Ol%C3%A1%21+Gostaria+de+um+or%C3%A7amento+para+montar+um+PC+personalizado." target="_blank" rel="noreferrer" className="hover:text-[#32CD32] transition-colors uppercase">Monte Seu PC</a>
+              <button onClick={() => onNavigate('services')} className="hover:text-[#32CD32] transition-colors uppercase cursor-pointer font-bold bg-transparent border-none p-0 inline-flex items-center">Nossos Serviços</button>
               <a href="#compramos-pc" className="hover:text-[#32CD32] transition-colors uppercase">Compramos Seu PC</a>
               <a href="#avaliacoes" className="hover:text-[#32CD32] transition-colors uppercase">Depoimentos</a>
               <a href="#onde-estamos" className="hover:text-[#32CD32] transition-colors uppercase">Onde Estamos</a>
             </nav>
-
-            {/* Botão de Contato Central */}
-            <a 
-              href="https://wa.me/553125121313?text=Ol%C3%A1%21+Vim+pelo+site+da+Compumed+e+gostaria+de+um+atendimento." 
-              target="_blank"
-              rel="noreferrer"
-              className="flex items-center gap-2 bg-[#2b395e] border border-[#2b395e] hover:bg-[#1f2a47] text-white px-5 py-2.5 rounded-full font-bold text-sm transition-all shadow-sm hover:shadow-md cursor-pointer"
-            >
-              <Phone className="w-4 h-4 text-[#32CD32]" />
-              <span className="hidden sm:inline">(31) 2512-1313</span>
-              <span className="sm:hidden">WhatsApp</span>
-            </a>
           </div>
         </div>
       </header>
@@ -554,12 +542,6 @@ export default function Home({ onNavigate }: HomeProps) {
                   </div>
                   <span className="text-xs">Rua Guanabara, 433, BH - MG</span>
                 </li>
-                <li className="flex items-center gap-3 text-slate-600">
-                  <div className="w-8 h-8 rounded bg-slate-50 border border-slate-200 flex items-center justify-center">
-                    <span className="text-xs font-bold text-slate-500">@</span>
-                  </div>
-                  <span className="text-xs">E-mail: contato@compumedbh.com.br</span>
-                </li>
               </ul>
             </div>
 
@@ -600,11 +582,11 @@ export default function Home({ onNavigate }: HomeProps) {
         href="https://wa.me/553125121313?text=Ol%C3%A1%21+Gostaria+de+um+or%C3%A7amento+ou+tirar+d%C3%BAvidas+sobre+os+servi%C3%A7os+da+Compumed." 
         target="_blank" 
         rel="noreferrer"
-        className="fixed bottom-6 right-6 z-55 bg-[#25D366] hover:bg-[#128C7E] text-white p-4 rounded-full shadow-2xl transition-all hover:scale-110 flex items-center justify-center cursor-pointer"
+        className="fixed bottom-6 right-6 z-50 bg-[#25D366] hover:bg-[#128C7E] text-white w-16 h-16 rounded-full shadow-2xl transition-all hover:scale-110 flex items-center justify-center cursor-pointer shrink-0"
         title="Fale conosco no WhatsApp"
       >
-        <svg className="w-8 h-8 fill-current" viewBox="0 0 24 24">
-          <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.5-5.739-1.446L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.413 9.863-9.864.001-2.637-1.03-5.117-2.905-6.993C16.555 1.87 14.1 1.83 11.465 1.83a9.851 9.851 0 0 0-9.861 9.871c.001 1.637.495 3.238 1.439 4.816l-1.031 3.766 3.864-1.013zM18.8 15.65c-.3-.15-1.784-.88-2.062-.981-.278-.1-.482-.15-.683.15-.201.3-.778.981-.954 1.18-.176.2-.352.225-.653.075-.301-.15-1.271-.468-2.42-1.494-.894-.798-1.5-.18-1.67-.478-.17-.3-.018-.46.13-.61.137-.137.3-.35.45-.525.15-.175.2-.3.3-.5.1-.2.05-.375-.025-.525-.075-.15-.683-1.649-.936-2.258-.246-.59-.497-.51-.683-.519-.176-.01-.377-.01-.578-.01-.201 0-.528.075-.804.375-.276.3-1.055 1.03-1.055 2.512s1.08 2.91 1.231 3.11c.15.2 2.124 3.243 5.147 4.545.719.31 1.28.497 1.716.636.722.23 1.378.197 1.9.119.58-.088 1.784-.73 2.036-1.436.252-.705.252-1.31.176-1.436-.076-.126-.277-.201-.578-.351z"/>
+        <svg className="w-9 h-9 text-white fill-current shrink-0" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg">
+          <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 512l145.4-38.2c32.7 17.8 69.4 27.2 107.1 27.2 122.4 0 222-99.6 222-222 0-59.3-23-115.1-65-157.1zM223.9 474c-33.1 0-65.6-8.9-93.9-25.7l-8.7-5.2L35 456l13.3-80.5-5.7-9.1c-18.4-29.4-28.2-63.5-28.2-98.9 0-101.5 82.6-184.1 184.1-184.1 49.2 0 95.4 19.2 130.2 54.1 34.8 34.9 54 81.1 54 130.2-.1 101.5-82.7 184.1-184.2 184.1zm102.2-139.3c-5.6-2.8-33.1-16.3-38.3-18.2-5.1-1.9-8.9-2.8-12.7 2.8-3.8 5.6-14.6 18.2-17.9 22-3.3 3.8-6.6 4.2-12.2 1.4-5.6-2.8-23.6-8.7-45-27.8-16.6-14.8-27.8-33.2-31-38.7-3.3-5.6-.4-8.6 2.5-11.4 2.6-2.5 5.6-6.6 8.5-9.9 2.8-3.3 3.8-5.6 5.6-9.4 1.9-3.8.9-7-1-9.9-1.9-2.8-12.7-30.7-17.4-42.1-4.6-11.1-9.1-9.6-12.7-9.8-3.3-.2-7.1-.2-10.8-.2-3.8 0-9.9 1.4-15.1 7.1-5.2 5.6-19.8 19.3-19.8 47.2 0 27.8 20.3 54.7 23.1 58.5 2.8 3.8 39.9 60.9 96.7 85.4 13.5 5.8 24 9.3 32.2 11.9 13.6 4.3 26 3.7 35.8 2.2 10.9-1.6 33.1-13.5 37.8-25.9 4.7-12.5 4.7-23.1 3.3-25.4-1.4-2.3-5.2-3.6-10.8-6.4z"/>
         </svg>
       </a>
 
