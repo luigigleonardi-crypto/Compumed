@@ -14,9 +14,10 @@ import {
   MapPin
 } from 'lucide-react';
 import { parts, predefinedBuilds, PartCategory, Part } from '../data/parts';
+import type { Page } from '../App';
 
 interface BuilderProps {
-  onNavigate: (page: 'home' | 'builder') => void;
+  onNavigate: (page: Page) => void;
 }
 
 type Mode = 'selection' | 'manual' | 'suggested';
@@ -38,39 +39,29 @@ export default function Builder({ onNavigate }: BuilderProps) {
     setSuggestedCategory(null);
     
     try {
-      const apiKey = process.env.GEMINI_API_KEY;
-      if (apiKey && apiKey !== 'undefined' && apiKey !== 'null') {
-        const { GoogleGenAI } = await import('@google/genai');
-        const ai = new GoogleGenAI({ apiKey });
-        const res = await ai.models.generateContent({
-           model: 'gemini-2.5-flash',
-           contents: `System: Você é especialista em hardware. O usuário quer montar um PC e dirá o que precisa rodar. Responda APENAS com um JSON no formato {"name": "Sua Categoria Ideal", "price": 4500, "desc": "Explicação em português e sem juridiquês de por que as peças são adequadas.", "specs": "Processador X, 16GB RAM, SSD Y, Videocard Z"}. O preço é estimado em BRL na média de mercado.\nUser: ${aiInput}`,
-           config: { responseMimeType: 'application/json' }
-        });
-        const data = JSON.parse(res.text || '{}');
-        setAiResult(data);
-      } else {
-        // Fallback for previews without API key injected correctly
-        setTimeout(() => {
-          setAiResult({
-              name: 'PC Personalizado Sugerido',
-              price: 4500,
-              desc: 'Configuração ideal montada com base na sua solicitação.',
-              specs: 'Intel Core i5 / AMD Ryzen 5, 16GB RAM, 1TB SSD NVMe, Placa de vídeo adequada.'
-          });
-          setIsSearching(false);
-        }, 1500);
-        return;
-      }
-    } catch(e) {
-      setAiResult({
-          name: 'PC Custo Benefício',
-          price: 3500,
-          desc: 'Esta é uma recomendação padrão do nosso estoque.',
-          specs: 'Ryzen 5 4600G (Vídeo Integrado), 16GB RAM, 500GB SSD'
+      const res = await fetch('/api/recommend', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ purpose: aiInput })
       });
+      if (!res.ok) {
+        throw new Error('Erro na resposta do servidor.');
+      }
+      const data = await res.json();
+      setAiResult(data);
+    } catch(e) {
+      console.error('Erro ao buscar recomendação:', e);
+      setAiResult({
+        name: 'PC Gamer Custo Benefício',
+        price: 3850,
+        desc: 'Recomendações técnicas balanceadas da nossa equipe para rodar o que descreveu.',
+        specs: 'Processador AMD Ryzen 5, Placa Mãe B550M, 16GB RAM, SSD 512GB, NVIDIA GeForce GTX 1650'
+      });
+    } finally {
+      setIsSearching(false);
     }
-    setIsSearching(false);
   };
 
   // Manual Build State

@@ -2,5 +2,7 @@
   "name": "Compumed Informática",
   "description": "Venda de máquinas rápidas e consertos de computadores em Belo Horizonte.",
   "requestFramePermissions": [],
-  "majorCapabilities": []
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
 }

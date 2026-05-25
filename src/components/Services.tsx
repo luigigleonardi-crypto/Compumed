@@ -88,20 +88,33 @@ export default function Services({ onNavigate }: ServicesProps) {
 
       {/* Contact floating CTA for mobile, inline for desktop */}
       <div className="max-w-3xl mx-auto px-4 mt-16 animate-in fade-in slide-in-from-bottom-4 duration-500 delay-300">
-        <div className="bg-[#001f3f] text-white rounded-3xl p-8 sm:p-12 text-center shadow-xl">
+        <div className="bg-[#2b395e] text-white rounded-3xl p-8 sm:p-12 text-center shadow-xl mb-12">
           <h2 className="text-2xl sm:text-3xl font-black uppercase mb-4">Precisa de algum desses serviços?</h2>
           <p className="text-slate-300 mb-8 max-w-xl mx-auto">Converse com nossos especialistas agora mesmo e tire suas dúvidas. Orçamento sem compromisso.</p>
           <a 
             href="https://wa.me/553125121313?text=Ol%C3%A1%21+Queria+saber+mais+sobre+os+servi%C3%A7os+da+Compumed." 
             target="_blank" 
             rel="noreferrer"
-            className="inline-flex items-center gap-3 bg-[#32CD32] hover:bg-[#28a428] text-white px-8 py-4 rounded-xl font-black text-sm uppercase tracking-wider transition-colors shadow-lg"
+            className="inline-flex items-center gap-3 bg-[#32CD32] hover:bg-[#28a428] text-white px-8 py-4 rounded-xl font-black text-sm uppercase tracking-wider transition-colors shadow-lg cursor-pointer"
           >
             <Phone className="w-5 h-5" />
             (31) 2512-1313 - Chamar no WhatsApp
           </a>
         </div>
       </div>
+
+      <footer className="mt-20 pt-16 border-t border-slate-200 text-sm">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4 pb-8">
+            <p className="text-slate-500 text-xs">
+              &copy; {new Date().getFullYear()} Compumed Informática. Todos os direitos reservados.
+            </p>
+            <p className="text-slate-500 font-bold text-xs tracking-wider text-center md:text-right">
+              Rua Guanabara, 433, Concórdia, BH - MG | CNPJ: 04.143.316/0001-93
+            </p>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
