@@ -30,12 +30,12 @@ export default function Services({ onNavigate }: ServicesProps) {
 
           {/* Logo Central */}
           <div className="flex items-center gap-2 cursor-pointer" onClick={() => onNavigate('home')}>
-            <div className="w-8 h-8 rounded-lg flex items-center justify-center font-black text-xl" style={{background: 'linear-gradient(135deg, #74b94a 50%, #2b395e 50%)'}}>
-              <span className="text-white drop-shadow-md">C</span>
-            </div>
-            <span className="font-extrabold text-xl tracking-tighter hidden sm:block text-[#2b395e]">
-              COMPU<span className="text-[#74b94a]">MED</span>
-            </span>
+            <img 
+              src="https://i.ibb.co/S4V4W3Qh/Chat-GPT-Image-25-de-mai-de-2026-15-01-01.png" 
+              alt="Compumed Informática" 
+              className="h-10 w-auto object-contain shrink-0"
+              referrerPolicy="no-referrer"
+            />
           </div>
           
           <div className="w-[88px]"></div>
@@ -122,11 +122,11 @@ export default function Services({ onNavigate }: ServicesProps) {
         href="https://wa.me/553125121313?text=Ol%C3%A1%21+Gostaria+de+um+or%C3%A7amento+ou+tirar+d%C3%BAvidas+sobre+os+servi%C3%A7os+da+Compumed." 
         target="_blank" 
         rel="noreferrer"
-        className="fixed bottom-6 right-6 z-50 bg-[#25D366] hover:bg-[#128C7E] text-white w-16 h-16 rounded-full shadow-2xl transition-all hover:scale-110 flex items-center justify-center cursor-pointer shrink-0"
+        className="fixed bottom-6 right-6 z-50 bg-[#25D366] hover:bg-[#128C7E] text-white w-16 h-16 rounded-full shadow-2xl transition-all hover:scale-110 flex items-center justify-center cursor-pointer shrink-0 hover:shadow-[0_0_20px_rgba(37,211,102,0.6)]"
         title="Fale conosco no WhatsApp"
       >
         <svg className="w-9 h-9 text-white fill-current shrink-0" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg">
-          <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 512l145.4-38.2c32.7 17.8 69.4 27.2 107.1 27.2 122.4 0 222-99.6 222-222 0-59.3-23-115.1-65-157.1zM223.9 474c-33.1 0-65.6-8.9-93.9-25.7l-8.7-5.2L35 456l13.3-80.5-5.7-9.1c-18.4-29.4-28.2-63.5-28.2-98.9 0-101.5 82.6-184.1 184.1-184.1 49.2 0 95.4 19.2 130.2 54.1 34.8 34.9 54 81.1 54 130.2-.1 101.5-82.7 184.1-184.2 184.1zm102.2-139.3c-5.6-2.8-33.1-16.3-38.3-18.2-5.1-1.9-8.9-2.8-12.7 2.8-3.8 5.6-14.6 18.2-17.9 22-3.3 3.8-6.6 4.2-12.2 1.4-5.6-2.8-23.6-8.7-45-27.8-16.6-14.8-27.8-33.2-31-38.7-3.3-5.6-.4-8.6 2.5-11.4 2.6-2.5 5.6-6.6 8.5-9.9 2.8-3.3 3.8-5.6 5.6-9.4 1.9-3.8.9-7-1-9.9-1.9-2.8-12.7-30.7-17.4-42.1-4.6-11.1-9.1-9.6-12.7-9.8-3.3-.2-7.1-.2-10.8-.2-3.8 0-9.9 1.4-15.1 7.1-5.2 5.6-19.8 19.3-19.8 47.2 0 27.8 20.3 54.7 23.1 58.5 2.8 3.8 39.9 60.9 96.7 85.4 13.5 5.8 24 9.3 32.2 11.9 13.6 4.3 26 3.7 35.8 2.2 10.9-1.6 33.1-13.5 37.8-25.9 4.7-12.5 4.7-23.1 3.3-25.4-1.4-2.3-5.2-3.6-10.8-6.4z"/>
+          <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 512l145.4-38.2c32.7 17.8 69.4 27.2 107.1 27.2 122.4 0 222-99.6 222-222 0-59.3-23-115.1-65-157.1zM223.9 474c-33.1 0-65.6-8.9-93.9-25.7l-8.7-5.2L35 456l13.3-80.5-5.7-9.1c-18.4-29.4-28.2-63.5-28.2-98.9 0-101.5 82.6-184.1 184.1-184.1 49.2 0 95.4 19.2 130.2 54.1 34.8 34.9 54 81.1 54 130.2-.1 101.5-82.7 184.1-184.2 184.1zm122.2-139.3c-5.6-2.8-33.1-16.3-38.3-18.2-5.1-1.9-8.9-2.8-12.7 2.8-3.8 5.6-14.6 18.2-17.9 22-3.3 3.8-6.6 4.2-12.2 1.4-5.6-2.8-23.6-8.7-45-27.8-16.6-14.8-27.8-33.2-31-38.7-3.3-5.6-.4-8.6 2.5-11.4 2.6-2.5 5.6-6.6 8.5-9.9 2.8-3.3 3.8-5.6 5.6-9.4 1.9-3.8.9-7-1-9.9-1.9-2.8-12.7-30.7-17.4-42.1-4.6-11.1-9.1-9.6-12.7-9.8-3.3-.2-7.1-.2-10.8-.2-3.8 0-9.9 1.4-15.1 7.1-5.2 5.6-19.8 19.3-19.8 47.2 0 27.8 20.3 54.7 23.1 58.5 2.8 3.8 39.9 60.9 96.7 85.4 13.5 5.8 24 9.3 32.2 11.9 13.6 4.3 26 3.7 35.8 2.2 10.9-1.6 33.1-13.5 37.8-25.9 4.7-12.5 4.7-23.1 3.3-25.4-1.4-2.3-5.2-3.6-10.8-6.4z"/>
         </svg>
       </a>
     </div>
