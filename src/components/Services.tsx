@@ -105,16 +105,30 @@ export default function Services({ onNavigate }: ServicesProps) {
 
       <footer className="mt-20 pt-16 border-t border-slate-200 text-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4 pb-8">
-            <p className="text-slate-500 text-xs">
-              &copy; {new Date().getFullYear()} Compumed Informática. Todos os direitos reservados.
-            </p>
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6 pb-8">
+            <div className="text-slate-500 text-xs text-center md:text-left">
+              <p>&copy; {new Date().getFullYear()} Compumed Informática. Todos os direitos reservados.</p>
+              <p className="mt-1 font-semibold">E-mail: contato@compumedbh.com.br | Tel: (31) 2512-1313</p>
+            </div>
             <p className="text-slate-500 font-bold text-xs tracking-wider text-center md:text-right">
               Rua Guanabara, 433, Concórdia, BH - MG | CNPJ: 04.143.316/0001-93
             </p>
           </div>
         </div>
       </footer>
+
+      {/* Botão Flutuante do WhatsApp */}
+      <a 
+        href="https://wa.me/553125121313?text=Ol%C3%A1%21+Gostaria+de+um+or%C3%A7amento+ou+tirar+d%C3%BAvidas+sobre+os+servi%C3%A7os+da+Compumed." 
+        target="_blank" 
+        rel="noreferrer"
+        className="fixed bottom-6 right-6 z-55 bg-[#25D366] hover:bg-[#128C7E] text-white p-4 rounded-full shadow-2xl transition-all hover:scale-110 flex items-center justify-center cursor-pointer"
+        title="Fale conosco no WhatsApp"
+      >
+        <svg className="w-8 h-8 fill-current" viewBox="0 0 24 24">
+          <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.5-5.739-1.446L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.413 9.863-9.864.001-2.637-1.03-5.117-2.905-6.993C16.555 1.87 14.1 1.83 11.465 1.83a9.851 9.851 0 0 0-9.861 9.871c.001 1.637.495 3.238 1.439 4.816l-1.031 3.766 3.864-1.013zM18.8 15.65c-.3-.15-1.784-.88-2.062-.981-.278-.1-.482-.15-.683.15-.201.3-.778.981-.954 1.18-.176.2-.352.225-.653.075-.301-.15-1.271-.468-2.42-1.494-.894-.798-1.5-.18-1.67-.478-.17-.3-.018-.46.13-.61.137-.137.3-.35.45-.525.15-.175.2-.3.3-.5.1-.2.05-.375-.025-.525-.075-.15-.683-1.649-.936-2.258-.246-.59-.497-.51-.683-.519-.176-.01-.377-.01-.578-.01-.201 0-.528.075-.804.375-.276.3-1.055 1.03-1.055 2.512s1.08 2.91 1.231 3.11c.15.2 2.124 3.243 5.147 4.545.719.31 1.28.497 1.716.636.722.23 1.378.197 1.9.119.58-.088 1.784-.73 2.036-1.436.252-.705.252-1.31.176-1.436-.076-.126-.277-.201-.578-.351z"/>
+        </svg>
+      </a>
     </div>
   );
 }

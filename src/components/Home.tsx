@@ -30,23 +30,6 @@ interface HomeProps {
 }
 
 export default function Home({ onNavigate }: HomeProps) {
-  // Client state to estimate old PC value for WhatsApp
-  const [sellDesc, setSellDesc] = useState('');
-  const [sellState, setSellState] = useState('excelente');
-
-  const handleSellSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!sellDesc.trim()) return;
-    
-    const message = `Olá Compumed! Gostaria de vender meu computador/notebook.
-Dispositivo/Peças: ${sellDesc}
-Estado de conservação: ${sellState.toUpperCase()}
-Desejo fazer uma avaliação física na loja para receber o valor ou dar como entrada em um novo.`;
-    
-    const waUrl = `https://wa.me/553125121313?text=${encodeURIComponent(message)}`;
-    window.open(waUrl, '_blank');
-  };
-
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900 font-sans selection:bg-[#32CD32] selection:text-white">
       
@@ -63,14 +46,13 @@ Desejo fazer uma avaliação física na loja para receber o valor ou dar como en
                 <span className="font-extrabold text-2xl tracking-tighter leading-none text-[#2b395e]">
                   COMPU<span className="text-[#74b94a]">MED</span>
                 </span>
-                <span className="text-[10px] font-bold tracking-widest text-slate-400 mt-0.5">TECNOLOGIA DESDE 2000</span>
               </div>
             </div>
 
             {/* Menu de Navegação Amigável */}
             <nav className="hidden md:flex items-center gap-8 text-sm font-bold tracking-wider text-[#2b395e]">
               <a href="#" className="hover:text-[#32CD32] transition-colors uppercase">Início</a>
-              <button onClick={() => onNavigate('builder')} className="hover:text-[#32CD32] transition-colors uppercase cursor-pointer">Monte Seu PC</button>
+              <a href="https://wa.me/553125121313?text=Ol%C3%A1%21+Gostaria+de+um+or%C3%A7amento+para+montar+um+PC+personalizado." target="_blank" rel="noreferrer" className="hover:text-[#32CD32] transition-colors uppercase">Monte Seu PC (Orçamento)</a>
               <button onClick={() => onNavigate('services')} className="hover:text-[#32CD32] transition-colors uppercase cursor-pointer">Nossos Serviços</button>
               <a href="#compramos-pc" className="hover:text-[#32CD32] transition-colors uppercase">Compramos Seu PC</a>
               <a href="#avaliacoes" className="hover:text-[#32CD32] transition-colors uppercase">Depoimentos</a>
@@ -105,54 +87,25 @@ Desejo fazer uma avaliação física na loja para receber o valor ou dar como en
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28 lg:py-36">
           <div className="grid lg:grid-cols-12 gap-12 items-center">
             
-            <div className="lg:col-span-7">
+            <div className="lg:col-span-12">
               <div className="inline-flex items-center gap-2 bg-[#74b94a]/10 border border-[#74b94a]/30 text-[#2b395e] px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest mb-6">
                 <span className="w-2 h-2 rounded-full bg-[#32CD32] animate-pulse"></span>
                 Sua Loja de Informática em BH Desde 2000
               </div>
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black uppercase tracking-tight text-[#2b395e] leading-[1.1] mb-6">
-                Mais antiga que os gigantes.<br />
                 <span className="text-[#32CD32]">Mais de 25 anos</span> de confiança bem perto de você!
               </h1>
-              <p className="text-base sm:text-lg text-slate-600 font-medium mb-10 max-w-xl leading-relaxed">
-                Não compre PC às cegas na internet com quem não te conhece. Na Compumed, você monta o seu PC, conversa com nossos técnicos de verdade e pode retirar direto na nossa loja em Belo Horizonte!
+              <p className="text-base sm:text-lg text-slate-600 font-medium mb-10 max-w-2xl leading-relaxed">
+                Não compre PC às cegas na internet com quem não te conhece. Na Compumed, você conversa com técnicos de verdade, monta o computador ideal para a sua necessidade com garantia total de quem reside em Belo Horizonte!
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4">
                 <button 
-                  onClick={() => onNavigate('builder')}
-                  className="bg-[#32CD32] hover:bg-[#28a428] text-white px-8 py-4 rounded-xl font-black text-sm uppercase tracking-wider text-center transition-all shadow-md hover:shadow-lg flex items-center justify-center gap-2 cursor-pointer"
-                >
-                  <Wand2Icon className="w-5 h-5" />
-                  Monte Seu PC Agora
-                </button>
-                <button 
                   onClick={() => onNavigate('services')}
-                  className="bg-white hover:bg-slate-50 text-[#2b395e] border-2 border-[#2b395e] px-8 py-4 rounded-xl font-bold text-sm uppercase tracking-wider text-center transition-colors shadow-xs cursor-pointer"
+                  className="bg-[#2b395e] hover:bg-[#1f2a47] text-white px-8 py-4 rounded-xl font-black text-sm uppercase tracking-wider text-center transition-all shadow-md hover:shadow-lg flex items-center justify-center gap-2 cursor-pointer"
                 >
-                  Conhecer Nossos Serviços
+                  Conhecer Nossos Serviços e Vendas
                 </button>
-              </div>
-            </div>
-
-            {/* Destaque Moderno: Compramos seu PC */}
-            <div className="lg:col-span-5 bg-white border-2 border-slate-200/90 rounded-3xl p-8 shadow-xl relative overflow-hidden group">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-slate-50 rounded-full -mr-16 -mt-16 group-hover:scale-105 transition-transform"></div>
-              
-              <div className="relative z-10">
-                <div className="w-12 h-12 bg-[#74b94a]/10 rounded-xl flex items-center justify-center mb-6">
-                  <Coins className="w-6 h-6 text-[#2b395e]" />
-                </div>
-                <h3 className="text-xl sm:text-2xl font-black text-[#2b395e] uppercase mb-2">Compramos Seu Computador Usado!</h3>
-                <p className="text-slate-500 text-sm mb-6 leading-relaxed">
-                  Tem notebook ou PC velho/parado em casa? Nós compramos peças e computadores e pagamos à vista no Pix! Traga na loja para avaliação sem compromisso.
-                </p>
-                <a 
-                  href="#compramos-pc" 
-                  className="inline-flex items-center gap-2 text-sm font-black uppercase text-[#32CD32] hover:text-[#28a428] tracking-wider"
-                >
-                  Fazer Simulação Online <ArrowRight className="w-4 h-4" />
-                </a>
               </div>
             </div>
 
@@ -224,32 +177,24 @@ Desejo fazer uma avaliação física na loja para receber o valor ou dar como en
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               { 
-                title: "PCs Gamers de Elite", 
-                desc: "Máquinas montadas com potência máxima para você jogar todos os games recentes (GTA V, Valorant, FIFA, Fortnite) sem travar e com gráficos lindos.", 
-                icon: MonitorPlay,
-                actionText: "Montar PC Simulado",
-                onClick: () => onNavigate('builder')
+                title: "Monte Seu PC (Sob Medida)", 
+                desc: "Planejamos e montamos computadores de alto desempenho adequados para cada necessidade (Gamer, Engenharia, Render 3D ou Escritório). Entre em contato por WhatsApp para solicitar um orçamento customizado!", 
+                icon: Cpu
               },
               { 
                 title: "PCs e Notebooks de Escritório", 
-                desc: "Máquinas configuradas para abrir planilhas, sistemas pesados, documentos e navegar na internet em alta velocidade sem lentidão ou estresse.", 
-                icon: Laptop,
-                actionText: "Falar com Consultor",
-                onClick: () => window.open("https://wa.me/553125121313?text=Ol%C3%A1%21+Gostaria+de+um+notebook+ou+computador+para+trabalho%2Fescrit%C3%B3rio.", "_blank")
+                desc: "Máquinas completas de alta estabilidade e excelente custo-benefício prontas para home-office, planilhas, sistemas empresariais e navegação rápida.", 
+                icon: Laptop
               },
               { 
-                title: "Peças de Reposição e Upgrade", 
-                desc: "Placas de vídeo, pentes de memória RAM velozes, processadores modernos de última geração, fontes reais seguras e SSDs que ligam o computador em 7 segundos.", 
-                icon: Cpu,
-                actionText: "Consultar Peças",
-                onClick: () => window.open("https://wa.me/553125121313?text=Ol%C3%A1%21+Procuro+uma+pe%C3%A7a+de+computador+espec%C3%ADfica+ou+quero+fazer+um+upgrade.", "_blank")
+                title: "Peças & Peças de Reposição", 
+                desc: "Placas de vídeo dedicadas, fontes com certificação de segurança reais, pentes de memória velozes, processadores de última geração e SSDs super rápidos.", 
+                icon: MonitorPlay
               },
               { 
                 title: "Certificado Digital na Hora", 
-                desc: "Emissão e validação rápida de certificado digital para sua empresa assinar documentos jurídicos ou notas fiscais com total validade e agilidade de forma oficial.", 
-                icon: KeySquare,
-                actionText: "Agendar Emissão",
-                onClick: () => window.open("https://wa.me/553125121313?text=Ol%C3%A1%21+Gostaria+de+emitir+um+Certificado+Digital.", "_blank")
+                desc: "Emissão e validação rápida e sem burocracias de certificados digitais (e-CPF e e-CNPJ) presenciais com completa validade jurídica.", 
+                icon: KeySquare
               },
             ].map((item, i) => (
               <div key={i} className="bg-white border border-slate-250 p-7 rounded-3xl hover:border-[#32CD32] hover:shadow-lg transition-all group flex flex-col h-full">
@@ -257,14 +202,7 @@ Desejo fazer uma avaliação física na loja para receber o valor ou dar como en
                   <item.icon className="w-6 h-6 text-[#2b395e]" />
                 </div>
                 <h4 className="text-xl font-bold text-[#2b395e] mb-3 uppercase leading-tight">{item.title}</h4>
-                <p className="text-slate-650 text-sm leading-relaxed mb-6 flex-grow">{item.desc}</p>
-                <button 
-                  onClick={item.onClick}
-                  className="w-full bg-slate-50 hover:bg-[#32CD32] hover:text-white text-[#2b395e] py-3 rounded-xl font-bold text-xs uppercase tracking-wider transition-all border border-slate-250 flex items-center justify-center gap-2 cursor-pointer"
-                >
-                  {item.actionText}
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </button>
+                <p className="text-slate-650 text-sm leading-relaxed flex-grow">{item.desc}</p>
               </div>
             ))}
           </div>
@@ -318,15 +256,7 @@ Desejo fazer uma avaliação física na loja para receber o valor ou dar como en
                 </div>
                 <div>
                   <h4 className="text-xl font-bold text-[#2b395e] uppercase mb-2 leading-snug">{item.title}</h4>
-                  <p className="text-slate-600 text-sm leading-relaxed mb-4">{item.desc}</p>
-                  <a 
-                    href={`https://wa.me/553125121313?text=Ol%C3%A1%21+Preciso+de+ajuda+com+o+servi%C3%A7o+de%3A+${encodeURIComponent(item.title)}`} 
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center gap-1 text-xs font-black uppercase text-[#32CD32] hover:text-[#28a428]"
-                  >
-                    Fazer orçamento sem compromisso <ArrowRight className="w-3 h-3" />
-                  </a>
+                  <p className="text-slate-600 text-sm leading-relaxed">{item.desc}</p>
                 </div>
               </div>
             ))}
@@ -335,7 +265,7 @@ Desejo fazer uma avaliação física na loja para receber o valor ou dar como en
         </div>
       </section>
 
-      {/* 6. NOVA SEÇÃO EXCLUSIVA: COMPRAMOS SEU PC USADO (INTERATIVO) */}
+      {/* 6. NOVA SEÇÃO EXCLUSIVA: COMPRAMOS SEU PC USADO (INFORMATIVO) */}
       <section id="compramos-pc" className="py-20 bg-[#2b395e] text-white overflow-hidden relative">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-[#74b94a] rounded-full blur-3xl"></div>
@@ -372,65 +302,47 @@ Desejo fazer uma avaliação física na loja para receber o valor ou dar como en
                   <div className="w-6 h-6 rounded-full bg-[#74b94a]/20 border border-[#74b94a] flex items-center justify-center shrink-0 mt-0.5">
                     <span className="text-[#32CD32] font-bold text-xs">✓</span>
                   </div>
-                  <p className="text-sm"><strong>Abatimento:</strong> Use o valor avaliado do notebook antigo para comprar seu PC Gamer.</p>
+                  <p className="text-sm"><strong>Abatimento:</strong> Use o valor avaliado do notebook antigo para comprar de forma segura.</p>
                 </div>
               </div>
             </div>
 
-            {/* Formulário Interativo com WhatsApp */}
+            {/* Painel Informativo sobre a Avaliação */}
             <div className="lg:col-span-6 bg-white rounded-3xl p-8 text-slate-900 shadow-xl border border-slate-100">
-              <h3 className="text-2xl font-black uppercase text-[#2b395e] mb-2">Simule a avaliação</h3>
-              <p className="text-slate-500 text-sm mb-6">Diga o que você tem e nós retornamos com a oferta no WhatsApp!</p>
+              <h3 className="text-2xl font-black uppercase text-[#2b395e] mb-4">Como Funciona a Avaliação?</h3>
+              <p className="text-slate-500 text-sm mb-6 leading-relaxed">
+                Não realizamos simulações genéricas automáticas. Valorizamos seu equipamento de forma justa! Entre em contato conosco para uma avaliação presencial ou estimativa real via telefone ou WhatsApp.
+              </p>
               
-              <form onSubmit={handleSellSubmit} className="space-y-5">
-                <div>
-                  <label className="block text-xs font-black uppercase tracking-wider text-slate-700 mb-2">
-                    O que você quer vender?
-                  </label>
-                  <textarea 
-                    value={sellDesc}
-                    onChange={(e) => setSellDesc(e.target.value)}
-                    rows={3}
-                    placeholder="Ex: Notebook Dell Inspiron Core i5, 8GB de RAM, com carregador. Está ligando mas o teclado está com algumas teclas ruins."
-                    className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:border-[#32CD32] text-sm leading-relaxed"
-                    required
-                  ></textarea>
-                </div>
-
-                <div>
-                  <label className="block text-xs font-black uppercase tracking-wider text-slate-700 mb-2">
-                    Qual o estado de conservação?
-                  </label>
-                  <div className="grid grid-cols-2 gap-3">
-                    {[
-                      { value: 'excelente', label: 'Funcionando Tudo' },
-                      { value: 'lento_problemas', label: 'Lento / Travando' },
-                      { value: 'nao_liga', label: 'Não Liga' },
-                      { value: 'pecas_soltas', label: 'Tenho Apenas Peças' },
-                    ].map((st) => (
-                      <button 
-                        key={st.value}
-                        type="button"
-                        onClick={() => setSellState(st.value)}
-                        className={`px-4 py-2.5 rounded-xl border-2 text-xs font-bold transition-all ${
-                          sellState === st.value 
-                            ? 'border-[#32CD32] bg-[#32CD32]/10 text-slate-900' 
-                            : 'border-slate-200 hover:border-slate-350 text-slate-600 bg-slate-50'
-                        }`}
-                      >
-                        {st.label}
-                      </button>
-                    ))}
+              <div className="space-y-4 mb-6">
+                <div className="flex gap-4 items-start">
+                  <span className="w-8 h-8 rounded-full bg-[#2b395e] text-white flex items-center justify-center font-black text-xs shrink-0">1</span>
+                  <div>
+                    <h5 className="font-bold text-slate-800 text-sm uppercase">Contato Prévio</h5>
+                    <p className="text-xs text-slate-500 leading-relaxed">Fale com nossos técnicos informando o modelo do equipamento e seu estado de conservação.</p>
                   </div>
                 </div>
+                <div className="flex gap-4 items-start">
+                  <span className="w-8 h-8 rounded-full bg-[#2b395e] text-white flex items-center justify-center font-black text-xs shrink-0">2</span>
+                  <div>
+                    <h5 className="font-bold text-slate-800 text-sm uppercase">Análise Física na Loja</h5>
+                    <p className="text-xs text-slate-500 leading-relaxed">Traga o computador ou notebook em nosso showroom para testarmos os componentes na hora.</p>
+                  </div>
+                </div>
+                <div className="flex gap-4 items-start">
+                  <span className="w-8 h-8 rounded-full bg-[#2b395e] text-white flex items-center justify-center font-black text-xs shrink-0">3</span>
+                  <div>
+                    <h5 className="font-bold text-slate-800 text-sm uppercase">PIX Imediato</h5>
+                    <p className="text-xs text-slate-500 leading-relaxed">Acordado o orçamento, transferimos o valor integral imediatamente via PIX ou aplicamos como desconto.</p>
+                  </div>
+                </div>
+              </div>
 
-                <button 
-                  type="submit" 
-                  className="w-full bg-[#32CD32] hover:bg-[#28a428] text-white py-4 rounded-xl font-bold text-xs uppercase tracking-wider transition-colors shadow-md flex items-center justify-center gap-2 cursor-pointer"
-                >
-                  <Send className="w-4 h-4" /> Solicitar Avaliação via WhatsApp
-                </button>
-              </form>
+              <div className="p-4 bg-slate-50 rounded-2xl border border-slate-200 text-center">
+                <p className="text-xs text-slate-600 font-medium">
+                  Para estimar o preço de venda, ligue no <strong className="text-[#2b395e]">(31) 2512-1313</strong> ou mande mensagem no nosso WhatsApp usando o botão flutuante!
+                </p>
+              </div>
             </div>
 
           </div>
@@ -616,10 +528,10 @@ Desejo fazer uma avaliação física na loja para receber o valor ou dar como en
                 Compumed Informática: Há mais de 25 anos vendendo e consertando computadores, trazendo velocidade para suas máquinas e prestando serviços de infraestrutura e CFTV em Belo Horizonte.
               </p>
               <div className="flex gap-4">
-                <a href="https://instagram.com" target="_blank" rel="noreferrer" className="w-10 h-10 rounded-full bg-slate-50 border border-slate-200 flex items-center justify-center text-slate-550 hover:text-[#32CD32] hover:bg-slate-100 transition-colors">
+                <a href="https://www.instagram.com/compumedinfo/" target="_blank" rel="noreferrer" className="w-10 h-10 rounded-full bg-slate-50 border border-slate-200 flex items-center justify-center text-slate-550 hover:text-[#32CD32] hover:bg-slate-100 transition-colors">
                   <Instagram className="w-4 h-4" />
                 </a>
-                <a href="https://facebook.com" target="_blank" rel="noreferrer" className="w-10 h-10 rounded-full bg-slate-50 border border-slate-200 flex items-center justify-center text-slate-550 hover:text-blue-600 hover:bg-slate-100 transition-colors">
+                <a href="https://www.facebook.com/compumedinfo/" target="_blank" rel="noreferrer" className="w-10 h-10 rounded-full bg-slate-50 border border-slate-200 flex items-center justify-center text-slate-550 hover:text-blue-600 hover:bg-slate-100 transition-colors">
                   <Facebook className="w-4 h-4" />
                 </a>
               </div>
@@ -641,6 +553,12 @@ Desejo fazer uma avaliação física na loja para receber o valor ou dar como en
                     <MapPin className="w-4 h-4" />
                   </div>
                   <span className="text-xs">Rua Guanabara, 433, BH - MG</span>
+                </li>
+                <li className="flex items-center gap-3 text-slate-600">
+                  <div className="w-8 h-8 rounded bg-slate-50 border border-slate-200 flex items-center justify-center">
+                    <span className="text-xs font-bold text-slate-500">@</span>
+                  </div>
+                  <span className="text-xs">E-mail: contato@compumedbh.com.br</span>
                 </li>
               </ul>
             </div>
@@ -677,32 +595,19 @@ Desejo fazer uma avaliação física na loja para receber o valor ou dar como en
         </div>
       </footer>
 
-    </div>
-  );
-}
+      {/* Botão Flutuante do WhatsApp */}
+      <a 
+        href="https://wa.me/553125121313?text=Ol%C3%A1%21+Gostaria+de+um+or%C3%A7amento+ou+tirar+d%C3%BAvidas+sobre+os+servi%C3%A7os+da+Compumed." 
+        target="_blank" 
+        rel="noreferrer"
+        className="fixed bottom-6 right-6 z-55 bg-[#25D366] hover:bg-[#128C7E] text-white p-4 rounded-full shadow-2xl transition-all hover:scale-110 flex items-center justify-center cursor-pointer"
+        title="Fale conosco no WhatsApp"
+      >
+        <svg className="w-8 h-8 fill-current" viewBox="0 0 24 24">
+          <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.5-5.739-1.446L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.413 9.863-9.864.001-2.637-1.03-5.117-2.905-6.993C16.555 1.87 14.1 1.83 11.465 1.83a9.851 9.851 0 0 0-9.861 9.871c.001 1.637.495 3.238 1.439 4.816l-1.031 3.766 3.864-1.013zM18.8 15.65c-.3-.15-1.784-.88-2.062-.981-.278-.1-.482-.15-.683.15-.201.3-.778.981-.954 1.18-.176.2-.352.225-.653.075-.301-.15-1.271-.468-2.42-1.494-.894-.798-1.5-.18-1.67-.478-.17-.3-.018-.46.13-.61.137-.137.3-.35.45-.525.15-.175.2-.3.3-.5.1-.2.05-.375-.025-.525-.075-.15-.683-1.649-.936-2.258-.246-.59-.497-.51-.683-.519-.176-.01-.377-.01-.578-.01-.201 0-.528.075-.804.375-.276.3-1.055 1.03-1.055 2.512s1.08 2.91 1.231 3.11c.15.2 2.124 3.243 5.147 4.545.719.31 1.28.497 1.716.636.722.23 1.378.197 1.9.119.58-.088 1.784-.73 2.036-1.436.252-.705.252-1.31.176-1.436-.076-.126-.277-.201-.578-.351z"/>
+        </svg>
+      </a>
 
-// Ícone interno simples para evitar conflitos de imports
-function Wand2Icon(props: React.SVGProps<SVGSVGElement>) {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      {...props}
-    >
-      <path d="m2 22 1-1" />
-      <path d="M12 2v2" />
-      <path d="M5 5 2 2" />
-      <path d="M19 5 22 2" />
-      <path d="V21" />
-      <path d="M14 5a3 3 0 0 1-3 3 3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3Z" />
-      <path d="M22 22 2 2" />
-    </svg>
+    </div>
   );
 }
