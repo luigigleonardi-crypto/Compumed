@@ -36,15 +36,12 @@ export default function Home({ onNavigate }: HomeProps) {
       {/* 1. Header Fixo & Moderno */}
       <header className="sticky top-0 z-50 w-full border-b border-slate-200/80 bg-white/95 backdrop-blur-md shadow-xs">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-20">
+          <div className="flex justify-between items-center py-4">
             {/* Logo */}
             <div className="flex items-center gap-3 cursor-pointer shrink-0" onClick={() => onNavigate('home')}>
-              <img 
-                src="https://i.ibb.co/S4V4W3Qh/Chat-GPT-Image-25-de-mai-de-2026-15-01-01.png" 
-                alt="Compumed Informática" 
-                className="h-20 sm:h-24 md:h-28 w-auto object-contain shrink-0 drop-shadow-xl"
-                referrerPolicy="no-referrer"
-              />
+              <span className="font-extrabold text-2xl tracking-tighter text-[#2b395e]">
+                COMPU<span className="text-[#32CD32]">MED</span>
+              </span>
             </div>
 
             {/* Menu de Navegação Amigável */}
@@ -503,11 +500,11 @@ export default function Home({ onNavigate }: HomeProps) {
             
             <div className="md:col-span-5">
               <div className="flex items-center gap-3 mb-6">
-                <div className="w-9 h-9 rounded-xl flex items-center justify-center font-black text-xl" style={{background: 'linear-gradient(135deg, #74b94a 50%, #2b395e 50%)'}}>
+                <div className="w-10 h-10 rounded-xl flex items-center justify-center font-black text-xl" style={{background: 'linear-gradient(135deg, #74b94a 50%, #2b395e 50%)'}}>
                   <span className="text-white drop-shadow-md">C</span>
                 </div>
-                <span className="font-extrabold text-xl tracking-tighter text-[#2b395e]">
-                  COMPU<span className="text-[#74b94a]">MED</span>
+                <span className="font-extrabold text-2xl tracking-tighter text-[#2b395e]">
+                  COMPU<span className="text-[#32CD32]">MED</span>
                 </span>
               </div>
               <p className="text-slate-500 text-sm leading-relaxed mb-6 max-w-sm">
@@ -580,15 +577,12 @@ export default function Home({ onNavigate }: HomeProps) {
         href="https://wa.me/553125121313?text=Ol%C3%A1%21+Gostaria+de+um+or%C3%A7amento+ou+tirar+d%C3%BAvidas+sobre+os+servi%C3%A7os+da+Compumed." 
         target="_blank" 
         rel="noreferrer"
-        className="fixed bottom-6 right-6 z-50 transition-all hover:scale-110 flex items-center justify-center cursor-pointer shrink-0"
+        className="fixed bottom-6 right-6 z-50 bg-[#25D366] hover:bg-[#128C7E] text-white w-16 h-16 rounded-full shadow-2xl transition-all hover:scale-110 flex items-center justify-center cursor-pointer shrink-0 hover:shadow-[0_0_20px_rgba(37,211,102,0.6)]"
         title="Fale conosco no WhatsApp"
       >
-        <img 
-          src="https://i.ibb.co/1GS0FRQn/1000-F-406690707-s-Va-PZSv-Cjn-JFKu-Vd-Nzqsp3m6-Drl2-K572-removebg-preview.png"
-          alt="WhatsApp Compumed" 
-          className="w-16 h-16 sm:w-20 sm:h-20 drop-shadow-[0_4px_12px_rgba(37,211,102,0.4)]"
-          referrerPolicy="no-referrer"
-        />
+        <svg className="w-10 h-10 text-white fill-current shrink-0" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12.004 0C5.372 0 0 5.372 0 12.004c0 2.115.548 4.103 1.507 5.845L.055 24l6.305-1.654a11.947 11.947 0 005.644 1.417c6.63 0 12.004-5.373 12.004-12.004C24.008 5.372 18.634 0 12.004 0zm6.54 17.518c-.262.738-1.53 1.341-2.113 1.422-.501.07-1.127.106-1.85-.105-.466-.135-1.072-.315-1.857-.654-3.33-1.442-5.463-4.834-5.63-5.056-.164-.222-1.314-1.745-1.314-3.324 0-1.579.827-2.355 1.122-2.662.296-.307.643-.385.856-.385s.43.01.616.018c.19.008.44-.029.69.57.262.628.9 2.183.98 2.348.08.163.13.355.02.578-.11.222-.165.319-.33.513-.164.194-.344.332-.492.51-.164.198-.337.414-.145.744.192.33.856 1.412 1.83 2.278.963.858 1.776 1.124 2.1.13.167-.353.473-.393.73-.393zm1.18-1c-.132.354-2.146.908-2.146.908s-.167.042-.393.042c-.225 0-1.037-.156-1.037-.156-.83-.178-1.67-.487-2.34-.84a11.391 11.391 0 01-3.69-3.23 8.358 8.358 0 01-1.36-2.58A6.33 6.33 0 011.66 6.84c.05-1.13.56-1.92 1.05-2.42l.33-.31.32-.3.32-.3h1.36v.91c0 .22.13.88.24 1.15.11.27.42.94.52 1.15.11.22.11.44-.11.66l-.68.64s-.11.11 0 .33c.12.22.46.77.94 1.25.48.48 1.05.84 1.27.96.22.12.33 0 .33 0l.73-.85c.23-.22.45-.11.68 0s1.25.59 1.48.7c.23.11.23.33.23.44v1.07z" />
+        </svg>
       </a>
 
     </div>
