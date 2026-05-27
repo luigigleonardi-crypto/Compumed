@@ -42,7 +42,7 @@ export default function Home({ onNavigate }: HomeProps) {
               <img 
                 src="https://i.ibb.co/S4V4W3Qh/Chat-GPT-Image-25-de-mai-de-2026-15-01-01.png" 
                 alt="Compumed Informática" 
-                className="h-16 md:h-18 w-auto object-contain shrink-0"
+                className="h-20 sm:h-24 md:h-28 w-auto object-contain shrink-0 drop-shadow-xl"
                 referrerPolicy="no-referrer"
               />
             </div>
@@ -129,7 +129,7 @@ export default function Home({ onNavigate }: HomeProps) {
               </div>
               <h4 className="text-lg font-bold text-[#2b395e] uppercase mb-4">Revisão Técnica Pré-Compra</h4>
               <p className="text-slate-600 text-sm leading-relaxed">
-                Você pode simular e escolher suas peças aqui no site ou mandar o que precisa. Um técnico certificado revisará e montará seu PC com organização interna impecável.
+                Você pode fazer o orçamento online e olhar com o técnico de uma vez. Garantimos organização interna impecável caso feche a montagem do seu PC conosco.
               </p>
             </div>
 
@@ -173,14 +173,14 @@ export default function Home({ onNavigate }: HomeProps) {
                 icon: Laptop
               },
               { 
-                title: "Peças & Peças de Reposição", 
+                title: "Peças de Reposição", 
                 desc: "Placas de vídeo dedicadas, fontes com certificação de segurança reais, pentes de memória velozes, processadores de última geração e SSDs super rápidos.", 
                 icon: MonitorPlay
               },
               { 
-                title: "Certificado Digital na Hora", 
-                desc: "Emissão e validação rápida e sem burocracias de certificados digitais (e-CPF e e-CNPJ) presenciais com completa validade jurídica.", 
-                icon: KeySquare
+                title: "Assistência Técnica Especializada", 
+                desc: "Limpeza interna preventiva completa, troca de pasta térmica de alta performance e manutenção avançada de hardware e seus periféricos.", 
+                icon: ShieldCheck
               },
             ].map((item, i) => (
               <div key={i} className="bg-white border border-slate-250 p-7 rounded-3xl hover:border-[#32CD32] hover:shadow-lg transition-all group flex flex-col h-full">
@@ -265,10 +265,10 @@ export default function Home({ onNavigate }: HomeProps) {
                 Dinheiro Rápido na Mão
               </span>
               <h2 className="text-3xl sm:text-5xl font-black uppercase tracking-tight text-white mb-6">
-                Compramos seu notebook ou computador antigo!
+                Compramos seus eletrônicos usados!
               </h2>
               <p className="text-slate-300 text-base sm:text-lg mb-8 leading-relaxed">
-                Está precisando de dinheiro extra ou quer dar seu aparelho velho como desconto na compra de um PC Gamer novinho? Nós avaliamos com justiça técnica e pagamos no Pix imediatamente.
+                Avaliamos em até 48 horas aquilo que você trouxer, falamos o que tem, o que não tem e quanto pagamos! Nós compramos monitores, peças de computadores e MacBooks. 
               </p>
 
               <div className="space-y-4 text-slate-200">
@@ -276,19 +276,19 @@ export default function Home({ onNavigate }: HomeProps) {
                   <div className="w-6 h-6 rounded-full bg-[#74b94a]/20 border border-[#74b94a] flex items-center justify-center shrink-0 mt-0.5">
                     <span className="text-[#32CD32] font-bold text-xs">✓</span>
                   </div>
-                  <p className="text-sm"><strong>Pagamento na hora:</strong> Avaliamos em tempo real e fazemos o Pix antes de você sair.</p>
+                  <p className="text-sm"><strong>Aceitamos com defeito:</strong> Fazemos a análise do estado primeiro e podemos fechar negócio.</p>
                 </div>
                 <div className="flex items-start gap-3">
                   <div className="w-6 h-6 rounded-full bg-[#74b94a]/20 border border-[#74b94a] flex items-center justify-center shrink-0 mt-0.5">
                     <span className="text-[#32CD32] font-bold text-xs">✓</span>
                   </div>
-                  <p className="text-sm"><strong>Aceitamos com defeito:</strong> Mesmo que o note esteja quebrado, lento ou sem ligar.</p>
+                  <p className="text-sm"><strong>Abatimento ou Venda Opcional:</strong> Pode ser usado para abatimento/desconto numa compra ou na venda apenas, nós pagaremos você.</p>
                 </div>
                 <div className="flex items-start gap-3">
                   <div className="w-6 h-6 rounded-full bg-[#74b94a]/20 border border-[#74b94a] flex items-center justify-center shrink-0 mt-0.5">
                     <span className="text-[#32CD32] font-bold text-xs">✓</span>
                   </div>
-                  <p className="text-sm"><strong>Abatimento:</strong> Use o valor avaliado do notebook antigo para comprar de forma segura.</p>
+                  <p className="text-sm"><strong>Resposta Rápida:</strong> Se fecharmos a compra, pagamos na hora e finalizamos o processo.</p>
                 </div>
               </div>
             </div>
@@ -297,7 +297,7 @@ export default function Home({ onNavigate }: HomeProps) {
             <div className="lg:col-span-6 bg-white rounded-3xl p-8 text-slate-900 shadow-xl border border-slate-100">
               <h3 className="text-2xl font-black uppercase text-[#2b395e] mb-4">Como Funciona a Avaliação?</h3>
               <p className="text-slate-500 text-sm mb-6 leading-relaxed">
-                Não realizamos simulações genéricas automáticas. Valorizamos seu equipamento de forma justa! Entre em contato conosco para uma avaliação presencial ou estimativa real via telefone ou WhatsApp.
+                Não realizamos simulações genéricas. Nós compramos direto da sua mão!
               </p>
               
               <div className="space-y-4 mb-6">
@@ -305,21 +305,21 @@ export default function Home({ onNavigate }: HomeProps) {
                   <span className="w-8 h-8 rounded-full bg-[#2b395e] text-white flex items-center justify-center font-black text-xs shrink-0">1</span>
                   <div>
                     <h5 className="font-bold text-slate-800 text-sm uppercase">Contato Prévio</h5>
-                    <p className="text-xs text-slate-500 leading-relaxed">Fale com nossos técnicos informando o modelo do equipamento e seu estado de conservação.</p>
+                    <p className="text-xs text-slate-500 leading-relaxed">Você entra em contato conosco avisando o que gostaria de vender ou mandar para abatimento.</p>
                   </div>
                 </div>
                 <div className="flex gap-4 items-start">
                   <span className="w-8 h-8 rounded-full bg-[#2b395e] text-white flex items-center justify-center font-black text-xs shrink-0">2</span>
                   <div>
-                    <h5 className="font-bold text-slate-800 text-sm uppercase">Análise Física na Loja</h5>
-                    <p className="text-xs text-slate-500 leading-relaxed">Traga o computador ou notebook em nosso showroom para testarmos os componentes na hora.</p>
+                    <h5 className="font-bold text-slate-800 text-sm uppercase">Se Tivermos Interesse</h5>
+                    <p className="text-xs text-slate-500 leading-relaxed">Se sim, você traz a(s) peça(s) na loja, fazemos a avaliação real no laboratório técnico.</p>
                   </div>
                 </div>
                 <div className="flex gap-4 items-start">
                   <span className="w-8 h-8 rounded-full bg-[#2b395e] text-white flex items-center justify-center font-black text-xs shrink-0">3</span>
                   <div>
-                    <h5 className="font-bold text-slate-800 text-sm uppercase">PIX Imediato</h5>
-                    <p className="text-xs text-slate-500 leading-relaxed">Acordado o orçamento, transferimos o valor integral imediatamente via PIX ou aplicamos como desconto.</p>
+                    <h5 className="font-bold text-slate-800 text-sm uppercase">Resposta em até 48 horas</h5>
+                    <p className="text-xs text-slate-500 leading-relaxed">Em até 48 horas passamos a resposta definitiva, fazemos a compra (ou o desconto) caso aceite o orçamento.</p>
                   </div>
                 </div>
               </div>
@@ -552,7 +552,7 @@ export default function Home({ onNavigate }: HomeProps) {
                 </li>
                 <li className="flex justify-between border-b border-slate-100 pb-2">
                   <span>Sábado</span>
-                  <span className="font-semibold text-slate-800">08:00 às 12:00</span>
+                  <span className="text-slate-400 font-bold">Fechado</span>
                 </li>
                 <li className="flex justify-between pb-2">
                   <span>Domingo</span>
@@ -580,12 +580,15 @@ export default function Home({ onNavigate }: HomeProps) {
         href="https://wa.me/553125121313?text=Ol%C3%A1%21+Gostaria+de+um+or%C3%A7amento+ou+tirar+d%C3%BAvidas+sobre+os+servi%C3%A7os+da+Compumed." 
         target="_blank" 
         rel="noreferrer"
-        className="fixed bottom-6 right-6 z-50 bg-[#25D366] hover:bg-[#128C7E] text-white w-16 h-16 rounded-full shadow-2xl transition-all hover:scale-110 flex items-center justify-center cursor-pointer shrink-0 hover:shadow-[0_0_20px_rgba(37,211,102,0.6)]"
+        className="fixed bottom-6 right-6 z-50 transition-all hover:scale-110 flex items-center justify-center cursor-pointer shrink-0"
         title="Fale conosco no WhatsApp"
       >
-        <svg className="w-10 h-10 text-white fill-current shrink-0" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path d="M12.004 0C5.372 0 0 5.372 0 12.004c0 2.115.548 4.103 1.507 5.845L.055 24l6.305-1.654a11.947 11.947 0 005.644 1.417c6.63 0 12.004-5.373 12.004-12.004C24.008 5.372 18.634 0 12.004 0zm6.54 17.518c-.262.738-1.53 1.341-2.113 1.422-.501.07-1.127.106-1.85-.105-.466-.135-1.072-.315-1.857-.654-3.33-1.442-5.463-4.834-5.63-5.056-.164-.222-1.314-1.745-1.314-3.324 0-1.579.827-2.355 1.122-2.662.296-.307.643-.385.856-.385s.43.01.616.018c.19.008.44-.029.69.57.262.628.9 2.183.98 2.348.08.163.13.355.02.578-.11.222-.165.319-.33.513-.164.194-.344.332-.492.51-.164.198-.337.414-.145.744.192.33.856 1.412 1.83 2.278.963.858 1.776 1.124 2.1.13.167-.353.473-.393.73-.393zm1.18-1c-.132.354-2.146.908-2.146.908s-.167.042-.393.042c-.225 0-1.037-.156-1.037-.156-.83-.178-1.67-.487-2.34-.84a11.391 11.391 0 01-3.69-3.23 8.358 8.358 0 01-1.36-2.58A6.33 6.33 0 011.66 6.84c.05-1.13.56-1.92 1.05-2.42l.33-.31.32-.3.32-.3h1.36v.91c0 .22.13.88.24 1.15.11.27.42.94.52 1.15.11.22.11.44-.11.66l-.68.64s-.11.11 0 .33c.12.22.46.77.94 1.25.48.48 1.05.84 1.27.96.22.12.33 0 .33 0l.73-.85c.23-.22.45-.11.68 0s1.25.59 1.48.7c.23.11.23.33.23.44v1.07z" />
-        </svg>
+        <img 
+          src="https://i.ibb.co/1GS0FRQn/1000-F-406690707-s-Va-PZSv-Cjn-JFKu-Vd-Nzqsp3m6-Drl2-K572-removebg-preview.png"
+          alt="WhatsApp Compumed" 
+          className="w-16 h-16 sm:w-20 sm:h-20 drop-shadow-[0_4px_12px_rgba(37,211,102,0.4)]"
+          referrerPolicy="no-referrer"
+        />
       </a>
 
     </div>
