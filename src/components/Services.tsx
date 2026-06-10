@@ -6,7 +6,8 @@ import {
   Wifi, 
   Server,
   MapPin,
-  Phone
+  Phone,
+  Cpu
 } from 'lucide-react';
 import type { Page } from '../App';
 
@@ -54,6 +55,11 @@ export default function Services({ onNavigate }: ServicesProps) {
 
         <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto animate-in fade-in slide-in-from-bottom-4 duration-500 delay-150">
           {[
+            { 
+              title: "Monte Seu PC (Sob Medida)", 
+              desc: "Planejamos e montamos computadores de alto desempenho adequados para cada necessidade (Gamer, Engenharia, Render 3D ou Escritório). Entre em contato por WhatsApp para solicitar um orçamento customizado!", 
+              icon: Cpu
+            },
             { 
               title: "Conserto de Notebook e Computador", 
               desc: "Seu computador está travando, não liga, ou está muito lento? Nós descobrimos o problema e arrumamos para você. Trocamos peças estragadas, formatamos e instalamos programas.", 

@@ -50,11 +50,11 @@ export default function Home({ onNavigate }: HomeProps) {
             {/* Menu de Navegação Amigável */}
             <nav className="hidden md:flex items-center gap-6 lg:gap-8 text-sm font-bold tracking-wider text-[#2b395e]">
               <a href="#" className="hover:text-[#32CD32] transition-colors uppercase shrink-0">Início</a>
-              <a href="https://wa.me/553125121313?text=Ol%C3%A1%21+Gostaria+de+um+or%C3%A7amento+para+montar+um+PC+personalizado." target="_blank" rel="noreferrer" className="hover:text-[#32CD32] transition-colors uppercase shrink-0">Monte Seu PC</a>
               <button onClick={() => onNavigate('services')} className="hover:text-[#32CD32] transition-colors uppercase cursor-pointer font-bold bg-transparent border-0 p-0 text-sm tracking-wider text-[#2b395e] shrink-0">Nossos Serviços</button>
               <a href="#compramos-pc" className="hover:text-[#32CD32] transition-colors uppercase shrink-0">Compramos Seu PC</a>
               <a href="#avaliacoes" className="hover:text-[#32CD32] transition-colors uppercase shrink-0">Depoimentos</a>
               <a href="#onde-estamos" className="hover:text-[#32CD32] transition-colors uppercase shrink-0">Onde Estamos</a>
+              <button onClick={() => onNavigate('contact')} className="hover:text-[#32CD32] transition-colors uppercase cursor-pointer font-bold bg-transparent border-0 p-0 text-sm tracking-wider text-[#2b395e] shrink-0">Contato</button>
             </nav>
           </div>
         </div>
@@ -160,13 +160,8 @@ export default function Home({ onNavigate }: HomeProps) {
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
-              { 
-                title: "Monte Seu PC (Sob Medida)", 
-                desc: "Planejamos e montamos computadores de alto desempenho adequados para cada necessidade (Gamer, Engenharia, Render 3D ou Escritório). Entre em contato por WhatsApp para solicitar um orçamento customizado!", 
-                icon: Cpu
-              },
               { 
                 title: "PCs e Notebooks de Escritório", 
                 desc: "Máquinas completas de alta estabilidade e excelente custo-benefício prontas para home-office, planilhas, sistemas empresariais e navegação rápida.", 
